@@ -1,4 +1,7 @@
-ros2 topic pub /cmd_vel geometry_msgs/msg/TwistStamped \
+#!/usr/bin/env bash
+source ~/.bashrc
+
+ros2 topic pub --rate 20 /cmd_vel geometry_msgs/msg/TwistStamped \
 "twist:
   linear:
     x: 0.2
