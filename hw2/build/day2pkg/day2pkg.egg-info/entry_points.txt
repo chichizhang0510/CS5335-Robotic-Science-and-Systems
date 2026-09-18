@@ -1,0 +1,6 @@
+[console_scripts]
+node1 = day2pkg.node1:main
+node2 = day2pkg.node2:main
+node3 = day2pkg.node3:main
+node4 = day2pkg.node4:main
+node5 = day2pkg.node5:main

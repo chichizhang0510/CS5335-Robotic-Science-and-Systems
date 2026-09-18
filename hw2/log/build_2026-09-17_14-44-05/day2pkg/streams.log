@@ -1,0 +1,18 @@
+[0.908s] Invoking command in '/home/chichi/Documents/cs5335/hw2/build/day2pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/chichi/Documents/cs5335/hw2/build/day2pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/chichi/Documents/cs5335/hw2/build/day2pkg/build --no-deps symlink_data
+[1.051s] running develop
+[1.126s] running egg_info
+[1.135s] writing day2pkg.egg-info/PKG-INFO
+[1.135s] writing dependency_links to day2pkg.egg-info/dependency_links.txt
+[1.135s] writing entry points to day2pkg.egg-info/entry_points.txt
+[1.135s] writing requirements to day2pkg.egg-info/requires.txt
+[1.135s] writing top-level names to day2pkg.egg-info/top_level.txt
+[1.149s] reading manifest file 'day2pkg.egg-info/SOURCES.txt'
+[1.150s] writing manifest file 'day2pkg.egg-info/SOURCES.txt'
+[1.157s] running build_ext
+[1.157s] Creating /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/python3.12/site-packages/day2pkg.egg-link (link to .)
+[1.158s] Installing node1 script to /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/day2pkg
+[1.158s] Installing node2 script to /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/day2pkg
+[1.158s] 
+[1.158s] Installed /home/chichi/Documents/cs5335/hw2/build/day2pkg
+[1.158s] running symlink_data
+[1.176s] Invoked command in '/home/chichi/Documents/cs5335/hw2/build/day2pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/chichi/Documents/cs5335/hw2/build/day2pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/chichi/Documents/cs5335/hw2/build/day2pkg/build --no-deps symlink_data

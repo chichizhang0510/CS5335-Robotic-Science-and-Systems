@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+day2pkg/__init__.py
+day2pkg/node1.py
+day2pkg/node2.py
+day2pkg/node3.py
+day2pkg/node4.py
+day2pkg/node5.py
+day2pkg.egg-info/PKG-INFO
+day2pkg.egg-info/SOURCES.txt
+day2pkg.egg-info/dependency_links.txt
+day2pkg.egg-info/entry_points.txt
+day2pkg.egg-info/requires.txt
+day2pkg.egg-info/top_level.txt
+day2pkg.egg-info/zip-safe
+resource/day2pkg

@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing day2pkg.egg-info/PKG-INFO
+writing dependency_links to day2pkg.egg-info/dependency_links.txt
+writing entry points to day2pkg.egg-info/entry_points.txt
+writing requirements to day2pkg.egg-info/requires.txt
+writing top-level names to day2pkg.egg-info/top_level.txt
+reading manifest file 'day2pkg.egg-info/SOURCES.txt'
+writing manifest file 'day2pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/python3.12/site-packages/day2pkg.egg-link (link to .)
+Installing node1 script to /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/day2pkg
+Installing node2 script to /home/chichi/Documents/cs5335/hw2/install/day2pkg/lib/day2pkg
+
+Installed /home/chichi/Documents/cs5335/hw2/build/day2pkg
+running symlink_data
