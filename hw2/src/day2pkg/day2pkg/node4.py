@@ -42,7 +42,7 @@ class Node4(Node):
             linear_x, angular_z = 0.1, 0.0
         elif MODE == 'circle':
             limit = 419
-            linear_x, angular_z = 0.15, 0.3
+            linear_x, angular_z = 0.15, 0.316
         elif MODE == 'arc_90':
             limit = 105
             linear_x, angular_z = 0.15, 0.3
