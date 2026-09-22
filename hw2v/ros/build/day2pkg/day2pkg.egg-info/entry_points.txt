@@ -1,0 +1,2 @@
+[console_scripts]
+node1 = day2pkg.node1:main

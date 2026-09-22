@@ -1,0 +1,30 @@
+running egg_info
+creating ../../build/day2pkg/day2pkg.egg-info
+writing ../../build/day2pkg/day2pkg.egg-info/PKG-INFO
+writing dependency_links to ../../build/day2pkg/day2pkg.egg-info/dependency_links.txt
+writing requirements to ../../build/day2pkg/day2pkg.egg-info/requires.txt
+writing top-level names to ../../build/day2pkg/day2pkg.egg-info/top_level.txt
+writing manifest file '../../build/day2pkg/day2pkg.egg-info/SOURCES.txt'
+reading manifest file '../../build/day2pkg/day2pkg.egg-info/SOURCES.txt'
+writing manifest file '../../build/day2pkg/day2pkg.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/vaishnavichaughule/ros/build/day2pkg/build
+creating /home/vaishnavichaughule/ros/build/day2pkg/build/lib
+creating /home/vaishnavichaughule/ros/build/day2pkg/build/lib/day2pkg
+copying day2pkg/__init__.py -> /home/vaishnavichaughule/ros/build/day2pkg/build/lib/day2pkg
+running install
+running install_lib
+creating /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg
+copying /home/vaishnavichaughule/ros/build/day2pkg/build/lib/day2pkg/__init__.py -> /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg
+byte-compiling /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/vaishnavichaughule/ros/install/day2pkg/share/ament_index
+creating /home/vaishnavichaughule/ros/install/day2pkg/share/ament_index/resource_index
+creating /home/vaishnavichaughule/ros/install/day2pkg/share/ament_index/resource_index/packages
+copying resource/day2pkg -> /home/vaishnavichaughule/ros/install/day2pkg/share/ament_index/resource_index/packages
+copying package.xml -> /home/vaishnavichaughule/ros/install/day2pkg/share/day2pkg
+running install_egg_info
+Copying ../../build/day2pkg/day2pkg.egg-info to /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg-0.0.0-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/home/vaishnavichaughule/ros/build/day2pkg/install.log'

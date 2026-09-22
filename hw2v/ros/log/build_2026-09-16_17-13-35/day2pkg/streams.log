@@ -1,0 +1,24 @@
+[0.576s] Invoking command in '/home/vaishnavichaughule/ros/src/day2pkg': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/vaishnavichaughule/ros/build/day2pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/day2pkg build --build-base /home/vaishnavichaughule/ros/build/day2pkg/build install --record /home/vaishnavichaughule/ros/build/day2pkg/install.log --install-scripts $base/lib/day2pkg --single-version-externally-managed install_data
+[0.763s] running egg_info
+[0.777s] writing ../../build/day2pkg/day2pkg.egg-info/PKG-INFO
+[0.777s] writing dependency_links to ../../build/day2pkg/day2pkg.egg-info/dependency_links.txt
+[0.777s] writing entry points to ../../build/day2pkg/day2pkg.egg-info/entry_points.txt
+[0.778s] writing requirements to ../../build/day2pkg/day2pkg.egg-info/requires.txt
+[0.778s] writing top-level names to ../../build/day2pkg/day2pkg.egg-info/top_level.txt
+[0.804s] reading manifest file '../../build/day2pkg/day2pkg.egg-info/SOURCES.txt'
+[0.804s] writing manifest file '../../build/day2pkg/day2pkg.egg-info/SOURCES.txt'
+[0.805s] running build
+[0.805s] running build_py
+[0.805s] copying day2pkg/node1.py -> /home/vaishnavichaughule/ros/build/day2pkg/build/lib/day2pkg
+[0.805s] running install
+[0.810s] running install_lib
+[0.823s] copying /home/vaishnavichaughule/ros/build/day2pkg/build/lib/day2pkg/node1.py -> /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg
+[0.823s] byte-compiling /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg/node1.py to node1.cpython-312.pyc
+[0.824s] running install_data
+[0.824s] running install_egg_info
+[0.839s] removing '/home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg-0.0.0-py3.12.egg-info' (and everything under it)
+[0.839s] Copying ../../build/day2pkg/day2pkg.egg-info to /home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages/day2pkg-0.0.0-py3.12.egg-info
+[0.840s] running install_scripts
+[0.934s] Installing node1 script to /home/vaishnavichaughule/ros/install/day2pkg/lib/day2pkg
+[0.934s] writing list of installed files to '/home/vaishnavichaughule/ros/build/day2pkg/install.log'
+[0.952s] Invoked command in '/home/vaishnavichaughule/ros/src/day2pkg' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/vaishnavichaughule/ros/build/day2pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vaishnavichaughule/ros/install/day2pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/day2pkg build --build-base /home/vaishnavichaughule/ros/build/day2pkg/build install --record /home/vaishnavichaughule/ros/build/day2pkg/install.log --install-scripts $base/lib/day2pkg --single-version-externally-managed install_data
