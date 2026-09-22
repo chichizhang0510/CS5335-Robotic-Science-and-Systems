@@ -9,6 +9,11 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped
 
+# choices：
+# MODE = 'straight_50'
+# MODE = 'straight_1m'
+MODE = 'circle'
+# MODE = 'arc_90'
 
 class Node4(Node):
     def __init__(self):
@@ -23,25 +28,35 @@ class Node4(Node):
 
         self.callback_count = 0
         self.finished = False
-        self.timer = self.create_timer(0.1, self.timer_callback)
+        self.timer = self.create_timer(0.05, self.timer_callback)
 
     def timer_callback(self):
         """Create a TwistStamped message with a low forward velocity and publish it."""
         self.callback_count += 1
 
-        # if self.callback_count <= 50:
-        # if self.callback_count <= 100:
-            # message = self.CreateTwist(0.1, 0.0)
-        # if self.callback_count <= 315:
-        if self.callback_count <= 79:
-            message = self.CreateTwist(0.1, 0.2)
+        if MODE == 'straight_50':
+            limit = 118
+            linear_x, angular_z = 0.1, 0.0
+        elif MODE == 'straight_1m':
+            limit = 217
+            linear_x, angular_z = 0.1, 0.0
+        elif MODE == 'circle':
+            limit = 419
+            linear_x, angular_z = 0.15, 0.3
+        elif MODE == 'arc_90':
+            limit = 105
+            linear_x, angular_z = 0.15, 0.3
+        else:
+            self.get_logger().error('Unknown MODE')
+            self.timer.cancel()
+            self.finished = True
+            return
+
+        if self.callback_count <= limit:
+            message = self.CreateTwist(linear_x, angular_z)
         else:
             message = self.CreateTwist(0.0, 0.0)
-            # self.get_logger().info('50 cm complete: published stop command')
-            # self.get_logger().info('100 cm complete: published stop command')
-            # self.get_logger().info('0.5m radius circle complete: published stop command')
-            self.get_logger().info('90 degree 0.5m radius circle complete: published stop command')
-
+            self.get_logger().info(f'{MODE} complete')
             self.timer.cancel()
             self.finished = True
 
