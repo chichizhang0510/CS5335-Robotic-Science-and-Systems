@@ -30,8 +30,15 @@ class Node4(Node):
         self.finished = False
         self.timer = self.create_timer(0.05, self.timer_callback)
 
+        self.warmup_count = 0
+
     def timer_callback(self):
         """Create a TwistStamped message with a low forward velocity and publish it."""
+        if MODE in ('circle', 'arc_90') and self.warmup_count < 20:
+            self.warmup_count += 1
+            self.publisher_.publish(self.CreateTwist(0.0, 0.0))
+            return
+
         self.callback_count += 1
 
         if MODE == 'straight_50':
@@ -42,15 +49,20 @@ class Node4(Node):
             linear_x, angular_z = 0.1, 0.0
         elif MODE == 'circle':
             limit = 419
-            linear_x, angular_z = 0.15, 0.316
+            linear_x, angular_z = 0.15, 0.3
         elif MODE == 'arc_90':
             limit = 105
-            linear_x, angular_z = 0.15, 0.316
+            linear_x, angular_z = 0.15, 0.3
         else:
             self.get_logger().error('Unknown MODE')
             self.timer.cancel()
             self.finished = True
             return
+
+        if MODE in ('circle', 'arc_90'):
+            ramp = min(self.callback_count / 20.0, 1.0)
+            linear_x *= ramp
+            angular_z *= ramp
 
         if self.callback_count <= limit:
             message = self.CreateTwist(linear_x, angular_z)
