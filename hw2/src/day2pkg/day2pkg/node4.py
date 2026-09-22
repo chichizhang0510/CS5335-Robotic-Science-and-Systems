@@ -12,8 +12,8 @@ from geometry_msgs.msg import TwistStamped
 # choices：
 # MODE = 'straight_50'
 # MODE = 'straight_1m'
-MODE = 'circle'
-# MODE = 'arc_90'
+# MODE = 'circle'
+MODE = 'arc_90'
 
 class Node4(Node):
     def __init__(self):
@@ -45,7 +45,7 @@ class Node4(Node):
             linear_x, angular_z = 0.15, 0.316
         elif MODE == 'arc_90':
             limit = 105
-            linear_x, angular_z = 0.15, 0.3
+            linear_x, angular_z = 0.15, 0.316
         else:
             self.get_logger().error('Unknown MODE')
             self.timer.cancel()

@@ -71,7 +71,7 @@ class Node5(Node):
 
     def DriveStraight(self, distance):
         """Drive the Turtlebot straight for a specified distance in meters."""
-        target_count = math.ceil(abs(distance) * 100)
+        target_count = math.ceil(abs(distance) * 100 + 9)
 
         if self.segment_count <= target_count:
             linear_x = 0.1 if distance >= 0 else -0.1
@@ -99,15 +99,18 @@ class Node5(Node):
             raise ValueError('degrees must not be zero')
 
         arc_length = abs(degrees) / 360.0 * 2 * math.pi * radius
-        target_count = math.ceil(arc_length * 100)
+        # target_count = math.ceil(arc_length * 100)
+        target_count = math.ceil(arc_length / (0.15 * 0.1))
 
         if self.segment_count <= target_count:
-            angular_z = 0.1 / radius
+            # angular_z = 0.1 / radius
+            angular_z = 0.15 / radius
 
             if degrees < 0:
                 angular_z = -angular_z
 
-            return self.CreateTwist(0.1, angular_z)
+            # return self.CreateTwist(0.1, angular_z)
+            return self.CreateTwist(0.15, angular_z)
 
         return None
 
