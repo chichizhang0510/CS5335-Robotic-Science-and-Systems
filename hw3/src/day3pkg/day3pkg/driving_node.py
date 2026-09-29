@@ -72,10 +72,17 @@ class DrivingNode(Node):
             linear_x, angular_z = self._linear_speed, 0.0
             description = f"moving {distance:.2f} m"
         else:
-            angle_radians = math.radians(angle_degrees)
-            duration = angle_radians / self._angular_speed
-            linear_x, angular_z = 0.0, self._angular_speed
-            description = f"turning {angle_degrees:.1f} degrees"
+            if angle_degrees <= 180.0:
+                turn_degrees = angle_degrees
+                angular_z = self._angular_speed
+                description = f"turning left {turn_degrees:.1f} degrees"
+            else:
+                turn_degrees = 360.0 - angle_degrees
+                angular_z = -self._angular_speed
+                description = f"turning right {turn_degrees:.1f} degrees"
+
+            duration = math.radians(turn_degrees) / self._angular_speed
+            linear_x = 0.0
 
         self.get_logger().info(
             f"Started {description}; target duration {duration:.2f} s."

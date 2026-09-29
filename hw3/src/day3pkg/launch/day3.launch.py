@@ -15,6 +15,7 @@ def generate_launch_description():
             Node(
                 package="day3pkg",
                 executable="executive_node",
+                prefix='bash -c \'exec "$@" </dev/tty\' --',
                 output="screen",
             ),
         ]

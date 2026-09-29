@@ -90,15 +90,15 @@ class ExecutiveNode(Node):
         # height is 2 times side length
         # move up -> draw the top rectangle -> end at middle left
         commands = [
-            (0.0, 90.0),  # turn to up
-            (side_length * 2.0, 0.0),  # move to top left
-            (0.0, 270.0),  # counter-clockwise 270 = clockwise 90, turn to right
-            (side_length, 0.0),  # move to top right
-            (0.0, 270.0),  # counter-clockwise 270 = clockwise 90, turn to down
             (side_length, 0.0),  # move to middle right
-            (0.0, 270.0),  # counter-clockwise 270 = clockwise 90, turn to left
-            (side_length, 0.0),  # move to middle left
+            (0.0, 90.0),  # turn to up
+            (side_length, 0.0),  # move to top right
+            (0.0, 90.0),  # turn to left
+            (side_length, 0.0),  # move to top left
+            (0.0, 90.0),  # turn to down
+            (side_length * 2.0, 0.0),  # move to bottom left
         ]
+        
         self.get_logger().info(f"Starting letter P with {side_length:.2f} m sides.")
         for distance, angle in commands:
             if not self.send_command(distance, angle):
