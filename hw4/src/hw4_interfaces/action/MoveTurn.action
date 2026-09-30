@@ -1,0 +1,11 @@
+# Goal: request exactly one command.  Distance is in metres; angle is degrees.
+float64 distance
+float64 angle
+# Arc command: used when radius > 0.
+bool arc_left         # true = arc to the left (CCW), false = to the right (CW)
+float64 radius        # radius of the circle, metres
+float64 arc_degrees   # how far around the circle to travel, 0 to 360
+---
+# Feedback is empty for Project 4.
+---
+# Result is empty for Project 4.

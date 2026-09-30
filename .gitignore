@@ -1,2 +1,15 @@
-hw2/log/
+# colcon build output (any workspace)
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Editors / OS
 .vscode/
+.idea/
+*.swp
+.DS_Store

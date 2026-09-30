@@ -1,0 +1,22 @@
+"""Task 4: start the Executive Node and Driving Node together."""
+
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+
+def generate_launch_description():
+    return LaunchDescription(
+        [
+            Node(
+                package="day4pkg",
+                executable="driving_node",
+                output="screen",
+            ),
+            Node(
+                package="day4pkg",
+                executable="executive_node",
+                prefix='bash -c \'exec "$@" </dev/tty\' --',
+                output="screen",
+            ),
+        ]
+    )
