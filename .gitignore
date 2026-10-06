@@ -1,10 +1,10 @@
 # colcon build output (any workspace)
-build/
-install/
-log/
+**/build/
+**/install/
+**/log/
 
 # Python
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *.egg-info/
 
