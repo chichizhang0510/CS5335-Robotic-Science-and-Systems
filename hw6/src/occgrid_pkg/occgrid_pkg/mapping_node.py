@@ -43,7 +43,7 @@ class MappingNode(Node):
         self.declare_parameter('laser_yaw_offset', 0.0)       # rad, lidar vs base_link
         self.declare_parameter('update_distance', 0.1)        # m
         self.declare_parameter('snapshot_distances', [0.0, 0.5, 1.0])
-        # self.declare_parameter('tolerance', 0.03)             # m, early-trigger margin
+        self.declare_parameter('toleranctolerancee', 0.0)             # m, early-trigger margin
         self.declare_parameter('save_every_update', True)
         self.declare_parameter('output_dir', '~/occgrid_output')
 
