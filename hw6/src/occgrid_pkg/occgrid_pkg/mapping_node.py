@@ -10,7 +10,8 @@ ROS2 occupancy-grid mapping node (Task 1 + Task 2 on the real robot).
 Run:
   ros2 run occgrid_pkg mapping_node
   ros2 run occgrid_pkg mapping_node --ros-args -p laser_yaw_offset:=1.5708 -p scan_topic:=/scan
-Then drive 1 m with your existing action (/day2pkg_drive_distance) in another terminal.
+Then drive 1 m with your existing Homework 4 ``move_turn`` action or the
+Turtlebot's built-in ``/drive_distance`` action in another terminal.
 """
 
 import math
@@ -43,9 +44,16 @@ class MappingNode(Node):
         self.declare_parameter('laser_yaw_offset', 0.0)       # rad, lidar vs base_link
         self.declare_parameter('update_distance', 0.1)        # m
         self.declare_parameter('snapshot_distances', [0.0, 0.5, 1.0])
-        self.declare_parameter('toleranctolerancee', 0.0)             # m, early-trigger margin
+        # Keep this at zero: the assignment asks for maps after each 0.1 m,
+        # not before the robot reaches that distance.  A tiny floating-point
+        # comparison error cannot make a ROS odometry message exactly 0.1 m,
+        # so using zero still triggers on the first message at/after a mark.
+        self.declare_parameter('tolerance', 0.0)                # m, never trigger early
         self.declare_parameter('save_every_update', True)
-        self.declare_parameter('output_dir', '~/occgrid_output')
+        # A relative path is resolved from the terminal's current folder.
+        # When launched from hw6, this keeps all generated images in
+        # hw6/occgrid_output instead of cluttering the home directory.
+        self.declare_parameter('output_dir', './occgrid_output')
 
         gp = self.get_parameter
         self.scan_topic = gp('scan_topic').value
