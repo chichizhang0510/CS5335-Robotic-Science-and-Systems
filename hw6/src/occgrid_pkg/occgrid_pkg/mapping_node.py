@@ -9,7 +9,7 @@ ROS2 occupancy-grid mapping node (Task 1 + Task 2 on the real robot).
 
 Run:
   ros2 run occgrid_pkg mapping_node
-  ros2 run occgrid_pkg mapping_node --ros-args -p laser_yaw_offset:=1.5708 -p scan_topic:=/scan
+  ros2 run occgrid_pkg mapping_node --ros-args -p laser_yaw_offset:=0.0 -p scan_topic:=/scan
 Then drive 1 m with your existing Homework 4 ``move_turn`` action or the
 Turtlebot's built-in ``/drive_distance`` action in another terminal.
 """
@@ -41,7 +41,9 @@ class MappingNode(Node):
 
         self.declare_parameter('scan_topic', '/scan')
         self.declare_parameter('odom_topic', '/odom')
-        self.declare_parameter('laser_yaw_offset', 0.0)       # rad, lidar vs base_link
+        # TurtleBot 4's rplidar_link is mounted rotated +90 deg about z relative
+        # to base_link, so scan angle 0 points to the robot's left, not forward.
+        self.declare_parameter('laser_yaw_offset', math.pi / 2)  # rad, lidar vs base_link
         self.declare_parameter('update_distance', 0.1)        # m
         self.declare_parameter('snapshot_distances', [0.0, 0.5, 1.0])
         # Keep this at zero: the assignment asks for maps after each 0.1 m,
