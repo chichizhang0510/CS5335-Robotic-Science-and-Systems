@@ -1,0 +1,4 @@
+# Shell scripts run on Ubuntu; keep them LF even on Windows checkouts
+# (core.autocrlf=true would otherwise turn them into CRLF and break bash).
+*.bash text eol=lf
+*.sh   text eol=lf
