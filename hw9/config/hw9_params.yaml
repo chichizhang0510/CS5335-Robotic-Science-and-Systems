@@ -6,16 +6,16 @@
   ros__parameters:
     # The three cone colours (Task 1 hard-codes these names). Each one needs
     # an hsv entry below.
-    colors: [orange, green, blue]
+    colors: [red, yellow, green]
 
     # HSV boxes in OpenCV units (H 0-179, S 0-255, V 0-255):
     #   [h_lo, h_hi, s_lo, s_hi, v_lo, v_hi]   (add 6 more numbers for a second box)
     # h_lo > h_hi wraps through 0, for red. Measure your cones with cone_calib.
     hsv:
-      red:    [170, 6, 120, 255, 70, 255]
+      red:    [168, 4, 184, 255, 136, 255]   # measured: centre patch H=176 S=254 V=226
       orange: [7, 20, 140, 255, 110, 255]
-      yellow: [21, 34, 110, 255, 110, 255]
-      green:  [35, 85, 80, 255, 40, 255]
+      yellow: [19, 34, 95, 255, 150, 255]    # measured: centre patch H=27 S=165 V=244
+      green:  [41, 57, 59, 255, 132, 255]   # measured: centre patch H=49 S=129 V=222
       blue:   [95, 125, 120, 255, 40, 255]
       purple: [126, 150, 60, 255, 40, 255]
       pink:   [151, 169, 60, 255, 100, 255]

@@ -13,6 +13,39 @@ The `hw9pkg` package does both tasks in one program, `cone_hunter`:
 | `cone_calib` | Calibration helper. It measures the cones' HSV colours and the stopping distance. It never moves the robot |
 | `sim_test` | Offline test of the same mission code in a simulated room. Needs no robot and no ROS network |
 
+## Current status (2026-11-09)
+
+**Calibration is half done. The demo (Step 2) has not been run yet.**
+
+Done in the lab:
+
+1. **Step 0 (undock):** works. The camera did not publish after undocking,
+   and had to be started by hand (see **Camera topic exists but has no data**
+   in Troubleshooting).
+2. **Step 1a (colours):** the cones are **red, yellow and green**. Their HSV
+   boxes were measured in the lab and saved in `config/hw9_params.yaml`
+   (`colors: [red, yellow, green]`). Checked with all three cones in view:
+   each cone appears only in its own mask, and no overlap warning is printed.
+
+Still to do:
+
+3. **Step 1b (lidar check):** with a cone on the floor ~0.5 m ahead, the lidar
+   must read ~0.5 m. The cones look short, possibly below the lidar (~19 cm).
+   If the lidar misses them, stand each cone on a box or book stack.
+4. **Step 1c (`contact_range`):** not measured. The file still has the
+   default `0.28`.
+5. **Step 2 (demo):** Tasks 1 and 2.
+
+Notes for the next session:
+
+- The robot was put back on the dock to charge, so Step 0 must be done again,
+  including the camera check.
+- The lab shelf has red and green parts (3D-printer spools). Set up the demo
+  facing away from it, or far from it, so Task 1 does not mistake them for
+  cones.
+- Run `cone_calib` and `cone_hunter` from the `hw9` folder. The params file
+  path is relative, and you get `Error opening YAML file` from anywhere else.
+
 ## How it works
 
 - **Camera (OAK-D preview, 250×250):** each colour is an HSV box. The largest
@@ -77,9 +110,9 @@ ros2 run hw9pkg sim_test --lidar-blind                     # cones too short for
 ### Every terminal: robot profile
 
 ```bash
-source ~/Desktop/cs5335/CS5335-Robotic-Science-and-Systems/robot_profiles/select_robot.bash f
-cd ~/Desktop/cs5335/CS5335-Robotic-Science-and-Systems/hw9
-source install/setup.bash
+source robot_profiles/select_robot.bash f
+cd hw9
+source ../install/setup.bash
 ```
 
 Do **not** run `simmode` (that is for Gazebo only).
@@ -94,6 +127,12 @@ ros2 action send_goal /undock irobot_create_msgs/action/Undock "{}"
 ros2 topic hz /scan                           # steady rate; Ctrl-C
 ros2 topic hz /oakd/rgb/preview/image_raw     # steady rate; Ctrl-C
 ```
+
+`Waiting for an action server to become available...` is printed every time.
+If it never gets past that line, the terminal cannot see the robot's base:
+check the robot profile and `ros2 topic list --no-daemon --spin-time 5`.
+If `/scan` has a rate but the camera does not, see **Camera topic exists but
+has no data** in Troubleshooting.
 
 ### Step 1 — calibrate (about 5 minutes, once per set of cones)
 
@@ -202,6 +241,25 @@ set them on the command line with `-p name:=value`. Write decimals with a point
   (Step 0), or the terminal is missing the robot profile.
 - **No `/oakd/rgb/preview/image_raw`.** Run `ros2 topic list | grep -i oakd` and
   pass the topic you find with `-p image_topic:=...`.
+- **Camera topic exists but has no data** (`ros2 topic hz` prints nothing, or
+  `does not appear to be published yet`). A topic is listed as soon as anything
+  *subscribes* to it, so being listed proves nothing. The robot's camera node
+  is loaded but stopped; power saver does not always restart it after
+  undocking. In order:
+  1. Confirm the robot is undocked: `/scan` must have a steady rate.
+  2. `ros2 service call /oakd/start_camera std_srvs/srv/Trigger "{}"` and wait
+     up to 20 s, then check `ros2 topic hz /oakd/rgb/preview/image_raw` again.
+  3. If there is still no data, SSH into the robot and start the camera driver
+     there, leaving that terminal open for the whole session:
+     ```bash
+     ros2 launch turtlebot4_bringup oakd.launch.py
+     ```
+     Run it **on the robot**, not on the laptop. Ctrl-C it when you are done
+     and tell the TA the camera needed a manual start.
+  4. Check the image size is still 250×250:
+     `ros2 topic echo /oakd/rgb/preview/image_raw --once --field width` (and
+     `--field height`). If not, the camera config differs from the default;
+     watch for a squashed cone in Step 1 and adjust `camera_hfov_deg`.
 - **`The robot is not turning`.** Odometry didn't change while turning was
   commanded. The robot may still be docked, `/cmd_vel` may not be reaching it,
   or it may be one of the misbehaving robots listed in
